@@ -1,12 +1,16 @@
-const squaresContainer = document.querySelector("#squares-container");
+let squaresContainer = document.querySelector("#squares-container");
 
-createSquares(16)
+let color = "black";
+
+initializeEventListeners();
+createSquares(50)
 
 function createSquares(num) {
     if(typeof num !== "number" || num > 100 || num < 1) {
         alert("The input must be a number between 1 and 100")
         return
     }
+
     for(let i = 0; i < num; i++) {
         let rowDiv = document.createElement("div");
         rowDiv.classList.add("row-div");
@@ -16,34 +20,38 @@ function createSquares(num) {
             rowDiv.appendChild(squareDiv);
         }
         squaresContainer.appendChild(rowDiv);
-
-        let func = (event) => {
-            mouseOverEvent(event);
-        }
-
-        squaresContainer.addEventListener("mousedown", (event) => {
-            event.preventDefault();
-            mouseDownEvent(squaresContainer, func);
-        })
-
-        squaresContainer.addEventListener("mouseup", () => {
-            mouseUpEvent(squaresContainer, func);
-        })
     }
+}
+
+function mouseDownEvent(element, functionForMouseOver) {
+    element.addEventListener("mouseover", functionForMouseOver);
+}
+
+function mouseOverEvent(event) {
+    changeColor(event.target, color);
+}
+
+function mouseUpEvent(element, functionToRemove) {
+    element.removeEventListener("mouseover", functionToRemove);
 }
 
 function changeColor(div, color) {
     div.style.backgroundColor = color;
 }
 
-function mouseDownEvent(element, func) {
-    element.addEventListener("mouseover", func);
+function initializeEventListeners() {
+    let func = (event) => {
+        mouseOverEvent(event);
+    };
+
+    squaresContainer.addEventListener("mousedown", (event) => {
+        event.preventDefault();
+        mouseDownEvent(squaresContainer, func);
+    });
+
+    squaresContainer.addEventListener("mouseup", () => {
+        mouseUpEvent(squaresContainer, func);
+    });
 }
 
-function mouseOverEvent(event) {
-    changeColor(event.target, "black");
-}
-
-function mouseUpEvent(element, functionToRemove) {
-    element.removeEventListener("mouseover", functionToRemove);
-}
+// pencil by <a href="https://www.freepik.com/free-vector/pencil_5028180.htm#fromView=search&page=1&position=0&uuid=8b012b02-dc8e-4401-8877-ade6763f877a">Image by gstudioimagen on Freepik</a>
