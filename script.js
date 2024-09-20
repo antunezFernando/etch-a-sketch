@@ -1,9 +1,9 @@
 let squaresContainer = document.querySelector("#squares-container");
 
-let color = "black";
+let currentColor = "black";
 
 initializeEventListeners();
-createSquares(50)
+createSquares(16)
 
 function createSquares(num) {
     if(typeof num !== "number" || num > 100 || num < 1) {
@@ -28,15 +28,15 @@ function mouseDownEvent(element, functionForMouseOver) {
 }
 
 function mouseOverEvent(event) {
-    changeColor(event.target, color);
+    changeColor(event.target);
 }
 
 function mouseUpEvent(element, functionToRemove) {
     element.removeEventListener("mouseover", functionToRemove);
 }
 
-function changeColor(div, color) {
-    div.style.backgroundColor = color;
+function changeColor(element) {
+    element.style.backgroundColor = currentColor;
 }
 
 function initializeEventListeners() {
@@ -46,6 +46,7 @@ function initializeEventListeners() {
 
     squaresContainer.addEventListener("mousedown", (event) => {
         event.preventDefault();
+        changeColor(event.target)
         mouseDownEvent(squaresContainer, func);
     });
 
