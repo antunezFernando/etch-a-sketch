@@ -8,15 +8,17 @@ body {
     height: 100vh;
 }
 
-#main-container {
+#squares-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 600px;
     height: 600px;
-    background-color: aqua;
+    background-color: black;
     gap: 1px;
+    border: 5px solid black;
+    border-radius: 5px;
 }
 
 .row-div {
@@ -27,7 +29,7 @@ body {
 }
 
 .square {
-    background-color: gray;
+    background-color: white;
     width: 100%;
     height: 100%;
     flex: 1 1 0;

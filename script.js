@@ -1,6 +1,6 @@
-const mainContainer = document.querySelector("#main-container");
+const mainContainer = document.querySelector("#squares-container");
 
-createSquares(16)
+createSquares(50)
 
 function createSquares(num) {
     if(typeof num !== "number" || num > 100 || num < 1) {
@@ -13,10 +13,15 @@ function createSquares(num) {
         for(let j = 0; j < num; j++) {
             let squareDiv = document.createElement("div");
             squareDiv.classList.add("square");
-            // squareDiv.style.width = `${90/num}%`;
-            // squareDiv.style.height = `${90/num}%`;
+            squareDiv.addEventListener("mouseenter", (e) => {
+                changeColor(e.target, "black");
+            });
             rowDiv.appendChild(squareDiv);
         }
         mainContainer.appendChild(rowDiv);
     }
+}
+
+function changeColor(div, color) {
+    div.style.backgroundColor = color
 }
