@@ -9,11 +9,12 @@ function createSquares(num) {
     }
     for(let i = 0; i < num; i++) {
         let rowDiv = document.createElement("div");
+        rowDiv.classList.add("row-div");
         for(let j = 0; j < num; j++) {
             let squareDiv = document.createElement("div");
             squareDiv.classList.add("square");
-            squareDiv.style.width = `${90/num}vh`;
-            squareDiv.style.height = `${90/num}vh`;
+            // squareDiv.style.width = `${90/num}%`;
+            // squareDiv.style.height = `${90/num}%`;
             rowDiv.appendChild(squareDiv);
         }
         mainContainer.appendChild(rowDiv);
