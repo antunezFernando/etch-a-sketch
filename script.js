@@ -5,16 +5,16 @@ let currentColor = "black";
 initializeEventListeners();
 createSquares(16)
 
-function createSquares(num) {
-    if(typeof num !== "number" || num > 100 || num < 1) {
+function createSquares(number) {
+    if(typeof number !== "number" || number > 100 || number < 1) {
         alert("The input must be a number between 1 and 100")
         return
     }
 
-    for(let i = 0; i < num; i++) {
+    for(let i = 0; i < number; i++) {
         let rowDiv = document.createElement("div");
         rowDiv.classList.add("row-div");
-        for(let j = 0; j < num; j++) {
+        for(let j = 0; j < number; j++) {
             let squareDiv = document.createElement("div");
             squareDiv.classList.add("square");
             rowDiv.appendChild(squareDiv);
@@ -32,6 +32,10 @@ function mouseOverEvent(event) {
 }
 
 function mouseUpEvent(element, functionToRemove) {
+    element.removeEventListener("mouseover", functionToRemove);
+}
+
+function mouseLeaveEvent(element, functionToRemove) {
     element.removeEventListener("mouseover", functionToRemove);
 }
 
@@ -53,6 +57,10 @@ function initializeEventListeners() {
     squaresContainer.addEventListener("mouseup", () => {
         mouseUpEvent(squaresContainer, func);
     });
+
+    squaresContainer.addEventListener("mouseleave", () => {
+        mouseLeaveEvent(squaresContainer, func);
+    })
 }
 
 // pencil by <a href="https://www.freepik.com/free-vector/pencil_5028180.htm#fromView=search&page=1&position=0&uuid=8b012b02-dc8e-4401-8877-ade6763f877a">Image by gstudioimagen on Freepik</a>
