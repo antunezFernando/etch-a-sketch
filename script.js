@@ -1,4 +1,7 @@
-let infoContainer = document.querySelector("#info");
+let infoDiv = document.querySelector("#info-div");
+let infoContainer = document.querySelector("#info-container");
+let infoButton = document.querySelector(".info-button");
+let sidebarDisplayed = false;
 let squaresContainer = document.querySelector("#squares-container");
 
 let canvasColor = "white";
@@ -70,12 +73,19 @@ function createGrid(number, bgColor) {
 }
 
 function initializeEventListeners() {
-    infoContainer.addEventListener("mouseenter", () => {
-        infoContainer.style.width = "300px";
-    });
-    
-    infoContainer.addEventListener("mouseleave", () => {
-        infoContainer.style.width = "100px";
+    infoButton.addEventListener("click", () => {
+        if(sidebarDisplayed) {
+            infoDiv.style.width = "100px";
+            infoContainer.classList.remove("displayed");
+            infoContainer.classList.add("hidden");
+            infoButton.setAttribute("src", "./images/menu.png");
+        } else {
+            infoDiv.style.width = "300px";
+            infoContainer.classList.remove("hidden");
+            infoContainer.classList.add("displayed");
+            infoButton.setAttribute("src", "./images/arrow.png");
+        }
+        sidebarDisplayed = !sidebarDisplayed;
     });
 
     let func = (event) => {
@@ -190,3 +200,5 @@ function getRandomNumber(limit) {
 // pencil by <a href="https://www.freepik.com/free-vector/pencil_5028180.htm#fromView=search&page=1&position=0&uuid=8b012b02-dc8e-4401-8877-ade6763f877a">Image by gstudioimagen on Freepik</a>
 // <a href="https://www.flaticon.com/free-icons/eraser" title="eraser icons">Eraser icons created by DinosoftLabs - Flaticon</a>
 // https://www.cdnfonts.com/kiralynn.font
+// <a href="https://www.flaticon.com/free-icons/open-menu" title="open menu icons">Open menu icons created by Pixel perfect - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/left-arrow" title="left arrow icons">Left arrow icons created by Any Icon - Flaticon</a>
