@@ -1,14 +1,14 @@
 let squaresContainer = document.querySelector("#squares-container");
 
-let backgroundColor = "white";
+let canvasColor = "white";
 let amountOfSquares = 16;
 
 let squaresInput = document.querySelector("#number-squares");
 let squaresInputButton = document.querySelector("#submit-number");
 squaresInputButton.onclick = () => {
     amountOfSquares = +squaresInput.value;
-    createGrid(amountOfSquares, backgroundColor);
-}
+    createGrid(amountOfSquares, canvasColor);
+};
 
 let eraser = document.querySelector("#eraser");
 
@@ -30,7 +30,7 @@ window.setInterval(() => {
 }, 500);
 
 initializeEventListeners();
-createGrid(16, backgroundColor);
+createGrid(16, canvasColor);
 
 function createGrid(number, bgColor) {
     if(typeof number !== "number" || number > 100 || number < 1) {
@@ -39,14 +39,14 @@ function createGrid(number, bgColor) {
     }
     
     squaresContainer.textContent = "";
-    backgroundColor = bgColor;
+    canvasColor = bgColor;
 
     for(let i = 0; i < number; i++) {
         let rowDiv = document.createElement("div");
         rowDiv.classList.add("row-div");
         for(let j = 0; j < number; j++) {
             let squareDiv = document.createElement("div");
-            squareDiv.style.backgroundColor = backgroundColor;
+            squareDiv.style.backgroundColor = canvasColor;
             squareDiv.classList.add("square");
             rowDiv.appendChild(squareDiv);
         }
@@ -107,10 +107,10 @@ function changeSquareColor(element) {
 }
 
 function selectColor(element) {
-    if(element.id !== "row-one" && element.id !== "row-two" && element.id !== "color-picker") {
+    if(element.classList.contains("color-button") || element.classList.contains("eraser-button")) {
         colorDiv.classList.remove("selected-color");
         if(element.id == "eraser") {
-            currentColor = backgroundColor;
+            currentColor = canvasColor;
             colorDiv = document.querySelector("#eraser");
             squaresContainer.style.cursor = "url(./images/erase.png), auto";
         } else if (element.id === "custom-color-input") {
@@ -131,7 +131,7 @@ function getRandomColorString() {
 }
 
 function applyStyleOnHover(element) {
-    if(element.id !== "row-one" && element.id !== "row-two" && element.id !== "color-picker") {
+    if(element.classList.contains("color-button") || element.classList.contains("eraser-button")) {
         if(element.id === "custom-color-input") {
             if(!customColorElement.classList.contains("selected-color")) {
                 customColorElement.classList.add("hover-button");
@@ -145,7 +145,7 @@ function applyStyleOnHover(element) {
 }
 
 function removeStyleOnLeave(element) {
-    if(element.id !== "row-one" && element.id !== "row-two" && element.id !== "color-picker") {
+    if(element.classList.contains("color-button") || element.classList.contains("eraser-button")) {
         if(element.id === "custom-color-input") {
             customColorElement.classList.remove("hover-button");
         } else {
