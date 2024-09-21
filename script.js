@@ -6,8 +6,7 @@ let amountOfSquares = 16;
 let squaresInput = document.querySelector("#number-squares");
 let squaresInputButton = document.querySelector("#submit-number");
 squaresInputButton.onclick = () => {
-    amountOfSquares = +squaresInput.value;
-    createGrid(amountOfSquares, canvasColor);
+    createGrid(+squaresInput.value, canvasColor);
 };
 
 let clearButton = document.querySelector("#clear-button");
@@ -50,6 +49,7 @@ function createGrid(number, bgColor) {
     }
     
     squaresContainer.textContent = "";
+    amountOfSquares = number;
     canvasColor = bgColor;
 
     for(let i = 0; i < number; i++) {
