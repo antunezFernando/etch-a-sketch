@@ -15,6 +15,12 @@ clearButton.onclick = () => {
     createGrid(amountOfSquares, canvasColor);
 };
 
+let canvasColorInput = document.querySelector("#canvas-color");
+let canvasColorButton = document.querySelector("#submit-color");
+canvasColorButton.onclick = () => {
+    createGrid(amountOfSquares, canvasColorInput.value);
+};
+
 let eraser = document.querySelector("#eraser");
 
 let colorPicker = document.querySelector("#color-picker");
