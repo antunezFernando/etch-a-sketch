@@ -18,33 +18,58 @@ body {
 
 #info-container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
     padding: 10px;
     height: 100%;
+    font-size: 1.2vw;
 }
 
-.hidden {
-    flex-direction: row;
-    justify-content: center;
-}
-
-.displayed {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.info-button {
+#info-button {
     width: 50px;
     height: 50px;
 }
 
-.displayed .info-button {
+.expanded #info-button {
     align-self: flex-end;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.shown {
+    visibility: visible;
+}
+
+#info-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.info-item {
+    font-size: 1.3vw;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    font-style: italic;
+    color: teal;
+}
+
+a:hover {
+    color: lightseagreen;
 }
 
 #title {
     font-size: 50px;
     font-family: 'KiraLynn', sans-serif;
+    text-align: center;
 }
 
 #main {

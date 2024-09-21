@@ -1,6 +1,7 @@
 let infoDiv = document.querySelector("#info-div");
 let infoContainer = document.querySelector("#info-container");
-let infoButton = document.querySelector(".info-button");
+let infoButton = document.querySelector("#info-button");
+let infoText = document.querySelector("#info-text");
 let sidebarDisplayed = false;
 let squaresContainer = document.querySelector("#squares-container");
 
@@ -76,13 +77,15 @@ function initializeEventListeners() {
     infoButton.addEventListener("click", () => {
         if(sidebarDisplayed) {
             infoDiv.style.width = "100px";
-            infoContainer.classList.remove("displayed");
-            infoContainer.classList.add("hidden");
+            infoContainer.classList.remove("expanded");
+            infoText.classList.remove("shown");
+            infoText.classList.add("hidden");
             infoButton.setAttribute("src", "./images/menu.png");
         } else {
             infoDiv.style.width = "300px";
-            infoContainer.classList.remove("hidden");
-            infoContainer.classList.add("displayed");
+            infoContainer.classList.add("expanded");
+            infoText.classList.remove("hidden");
+            infoText.classList.add("shown");
             infoButton.setAttribute("src", "./images/arrow.png");
         }
         sidebarDisplayed = !sidebarDisplayed;
@@ -196,9 +199,3 @@ function removeStyleOnLeave(element) {
 function getRandomNumber(limit) {
     return Math.floor(Math.random() * limit);
 }
-
-// pencil by <a href="https://www.freepik.com/free-vector/pencil_5028180.htm#fromView=search&page=1&position=0&uuid=8b012b02-dc8e-4401-8877-ade6763f877a">Image by gstudioimagen on Freepik</a>
-// <a href="https://www.flaticon.com/free-icons/eraser" title="eraser icons">Eraser icons created by DinosoftLabs - Flaticon</a>
-// https://www.cdnfonts.com/kiralynn.font
-// <a href="https://www.flaticon.com/free-icons/open-menu" title="open menu icons">Open menu icons created by Pixel perfect - Flaticon</a>
-// <a href="https://www.flaticon.com/free-icons/left-arrow" title="left arrow icons">Left arrow icons created by Any Icon - Flaticon</a>
