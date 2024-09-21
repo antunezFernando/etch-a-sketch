@@ -168,3 +168,24 @@ body {
 #custom-color-input {
     opacity: 0;
 }
+
+.shake-animation {
+    animation: shake 0.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: 2;
+}
+
+@keyframes shake {
+    25% {
+        transform: translate(-20px);
+    }
+    50% {
+        transform: translate(0px);
+    }
+    75% {
+        transform: translate(20px);
+    }
+    100% {
+        transform: translate(0px);
+    }
+}

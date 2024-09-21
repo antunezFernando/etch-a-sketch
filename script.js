@@ -7,11 +7,14 @@ let squaresInput = document.querySelector("#number-squares");
 let squaresInputButton = document.querySelector("#submit-number");
 squaresInputButton.onclick = () => {
     createGrid(+squaresInput.value, canvasColor);
+
 };
 
 let clearButton = document.querySelector("#clear-button");
 clearButton.onclick = () => {
+    squaresContainer.classList.add("shake-animation");
     createGrid(amountOfSquares, canvasColor);
+
 };
 
 let canvasColorInput = document.querySelector("#canvas-color");
@@ -82,6 +85,10 @@ function initializeEventListeners() {
 
     squaresContainer.addEventListener("mouseleave", () => {
         mouseLeaveEvent(squaresContainer, func);
+    });
+
+    squaresContainer.addEventListener("animationend", () => {
+        squaresContainer.classList.remove("shake-animation");
     });
 
     colorPicker.addEventListener("click", (e) => {
