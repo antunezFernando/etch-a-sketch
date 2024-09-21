@@ -112,11 +112,14 @@ function selectColor(element) {
         if(element.id == "eraser") {
             currentColor = backgroundColor;
             colorDiv = document.querySelector("#eraser");
+            squaresContainer.style.cursor = "url(./images/erase.png), auto";
         } else if (element.id === "custom-color-input") {
             colorDiv = document.querySelector("#custom");
+            squaresContainer.style.cursor = "url(./images/pencil.png), auto";
         } else {
             currentColor = element.id;
             colorDiv = document.querySelector(`#${element.id}`);
+            squaresContainer.style.cursor = "url(./images/pencil.png), auto";
         }
         colorDiv.classList.remove("hover-button");
         colorDiv.classList.add("selected-color");
