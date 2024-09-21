@@ -81,20 +81,32 @@ function selectColor(element) {
     switch(element.id) {
         case "black":
             currentColor = "black";
+            colorDiv = document.querySelector(`#${element.id}`);
+            element.classList.add("selected-color");
             break;
         case "white":
             currentColor = "white";
+            colorDiv = document.querySelector(`#${element.id}`);
+            element.classList.add("selected-color");
             break;
         case "blue":
             currentColor = "blue";
+            colorDiv = document.querySelector(`#${element.id}`);
+            element.classList.add("selected-color");
             break;
         case "red":
             currentColor = "red";
+            colorDiv = document.querySelector(`#${element.id}`);
+            element.classList.add("selected-color");
             break;
+        case "yellow":
+            currentColor = "yellow";
+            colorDiv = document.querySelector(`#${element.id}`);
+            element.classList.add("selected-color");
+            break;
+        default:
+            colorDiv.classList.add("selected-color");
     };
-    
-    colorDiv = document.querySelector(`#${element.id}`);
-    element.classList.add("selected-color");
 }
 
 // pencil by <a href="https://www.freepik.com/free-vector/pencil_5028180.htm#fromView=search&page=1&position=0&uuid=8b012b02-dc8e-4401-8877-ade6763f877a">Image by gstudioimagen on Freepik</a>
