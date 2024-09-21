@@ -2,13 +2,16 @@ let squaresContainer = document.querySelector("#squares-container");
 
 let colorPicker = document.querySelector("#color-picker");
 
-// let blackButton = document.querySelector("#black");
-// let whiteButton = document.querySelector("#white");
-// let blueButton = document.querySelector("blue");
-// let redButton = document.querySelector("red");
-
 let currentColor = "black";
 let colorDiv = document.querySelector("#black");
+
+let customColor = document.querySelector("#custom");
+customColor.style.backgroundColor = getRandomColorString();
+
+window.setInterval(() => {
+    customColor.style.backgroundColor =
+    getRandomColorString()
+}, 1000);
 
 initializeEventListeners();
 createSquares(64)
@@ -51,7 +54,7 @@ function initializeEventListeners() {
     });
 
     colorPicker.addEventListener("click", e => {
-        selectColor(e.target);
+        selectPredefinedColor(e.target);
     });
 }
 
@@ -75,38 +78,23 @@ function changeColor(element) {
     element.style.backgroundColor = currentColor;
 }
 
-function selectColor(element) {
-    colorDiv.classList.remove("selected-color");
+function selectPredefinedColor(element) {
+    if(element.id !== "row-one" && element.id !== "row-two" &&
+        element.id !== "color-picker") {
+        colorDiv.classList.remove("selected-color");
+        currentColor = element.id;
+        colorDiv = document.querySelector(`#${element.id}`);
+        colorDiv.classList.add("selected-color");
+    }
+}
 
-    switch(element.id) {
-        case "black":
-            currentColor = "black";
-            colorDiv = document.querySelector(`#${element.id}`);
-            element.classList.add("selected-color");
-            break;
-        case "white":
-            currentColor = "white";
-            colorDiv = document.querySelector(`#${element.id}`);
-            element.classList.add("selected-color");
-            break;
-        case "blue":
-            currentColor = "blue";
-            colorDiv = document.querySelector(`#${element.id}`);
-            element.classList.add("selected-color");
-            break;
-        case "red":
-            currentColor = "red";
-            colorDiv = document.querySelector(`#${element.id}`);
-            element.classList.add("selected-color");
-            break;
-        case "yellow":
-            currentColor = "yellow";
-            colorDiv = document.querySelector(`#${element.id}`);
-            element.classList.add("selected-color");
-            break;
-        default:
-            colorDiv.classList.add("selected-color");
-    };
+function getRandomColorString() {
+    return `rgb(${randomNumber(255)}, ${randomNumber(255)}, ${randomNumber(255)})`;
+}
+
+function randomNumber(limit) {
+    let num = Math.floor(Math.random() * limit);
+    return num;
 }
 
 // pencil by <a href="https://www.freepik.com/free-vector/pencil_5028180.htm#fromView=search&page=1&position=0&uuid=8b012b02-dc8e-4401-8877-ade6763f877a">Image by gstudioimagen on Freepik</a>
