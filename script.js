@@ -1,12 +1,16 @@
 let squaresContainer = document.querySelector("#squares-container");
 
+let backgroundColor = "white";
+let amountOfSquares = 16;
+
 let squaresInput = document.querySelector("#number-squares");
 let squaresInputButton = document.querySelector("#submit-number");
 squaresInputButton.onclick = () => {
-    createGrid(+squaresInput.value);
+    amountOfSquares = +squaresInput.value;
+    createGrid(amountOfSquares, backgroundColor);
 }
 
-let backgroundColor = "white";
+let eraser = document.querySelector("#eraser");
 
 let colorPicker = document.querySelector("#color-picker");
 
@@ -26,15 +30,16 @@ window.setInterval(() => {
 }, 500);
 
 initializeEventListeners();
-createGrid(16)
+createGrid(16, backgroundColor);
 
-function createGrid(number) {
+function createGrid(number, bgColor) {
     if(typeof number !== "number" || number > 100 || number < 1) {
         alert("The input must be a number between 1 and 100")
         return
     }
     
     squaresContainer.textContent = "";
+    backgroundColor = bgColor;
 
     for(let i = 0; i < number; i++) {
         let rowDiv = document.createElement("div");
@@ -56,7 +61,7 @@ function initializeEventListeners() {
 
     squaresContainer.addEventListener("mousedown", (e) => {
         e.preventDefault();
-        changeColor(e.target)
+        changeSquareColor(e.target)
         mouseDownEvent(squaresContainer, func);
     });
 
@@ -86,7 +91,7 @@ function mouseDownEvent(element, functionForMouseOver) {
 }
 
 function mouseOverEvent(event) {
-    changeColor(event.target);
+    changeSquareColor(event.target);
 }
 
 function mouseUpEvent(element, functionToRemove) {
@@ -97,18 +102,21 @@ function mouseLeaveEvent(element, functionToRemove) {
     element.removeEventListener("mouseover", functionToRemove);
 }
 
-function changeColor(element) {
+function changeSquareColor(element) {
     element.style.backgroundColor = currentColor;
 }
 
 function selectColor(element) {
     if(element.id !== "row-one" && element.id !== "row-two" && element.id !== "color-picker") {
         colorDiv.classList.remove("selected-color");
-        if(element.id !== "custom-color-input") {
+        if(element.id == "eraser") {
+            currentColor = backgroundColor;
+            colorDiv = document.querySelector("#eraser");
+        } else if (element.id === "custom-color-input") {
+            colorDiv = document.querySelector("#custom");
+        } else {
             currentColor = element.id;
             colorDiv = document.querySelector(`#${element.id}`);
-        } else {
-            colorDiv = document.querySelector("#custom");
         }
         colorDiv.classList.remove("hover-button");
         colorDiv.classList.add("selected-color");
@@ -148,3 +156,5 @@ function getRandomNumber(limit) {
 }
 
 // pencil by <a href="https://www.freepik.com/free-vector/pencil_5028180.htm#fromView=search&page=1&position=0&uuid=8b012b02-dc8e-4401-8877-ade6763f877a">Image by gstudioimagen on Freepik</a>
+// <a href="https://www.flaticon.com/free-icons/eraser" title="eraser icons">Eraser icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/eraser" title="eraser icons">Eraser icons created by DinosoftLabs - Flaticon</a>
