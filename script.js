@@ -5,13 +5,17 @@ let colorPicker = document.querySelector("#color-picker");
 let currentColor = "black";
 let colorDiv = document.querySelector("#black");
 
-let customColor = document.querySelector("#custom");
-customColor.style.backgroundColor = getRandomColorString();
+let customColorElement = document.querySelector("#custom");
+customColorElement.style.backgroundColor = getRandomColorString();
+
+let customColorInput = document.querySelector("#custom-color-input");
+customColorInput.onchange = () => {
+    currentColor = customColorInput.value;
+};
 
 window.setInterval(() => {
-    customColor.style.backgroundColor =
-    getRandomColorString()
-}, 1000);
+    customColorElement.style.backgroundColor = getRandomColorString();
+}, 500);
 
 initializeEventListeners();
 createSquares(64)
@@ -54,7 +58,7 @@ function initializeEventListeners() {
     });
 
     colorPicker.addEventListener("click", (e) => {
-        selectPredefinedColor(e.target);
+        selectColor(e.target);
     });
 
     colorPicker.addEventListener("mouseover", (e) => {
@@ -86,11 +90,15 @@ function changeColor(element) {
     element.style.backgroundColor = currentColor;
 }
 
-function selectPredefinedColor(element) {
+function selectColor(element) {
     if(element.id !== "row-one" && element.id !== "row-two" && element.id !== "color-picker") {
         colorDiv.classList.remove("selected-color");
-        currentColor = element.id;
-        colorDiv = document.querySelector(`#${element.id}`);
+        if(element.id !== "custom-color-input") {
+            currentColor = element.id;
+            colorDiv = document.querySelector(`#${element.id}`);
+        } else {
+            colorDiv = document.querySelector("#custom");
+        }
         colorDiv.classList.remove("hover-button");
         colorDiv.classList.add("selected-color");
     }
@@ -102,15 +110,25 @@ function getRandomColorString() {
 
 function applyStyleOnHover(element) {
     if(element.id !== "row-one" && element.id !== "row-two" && element.id !== "color-picker") {
-        if(!element.classList.contains("selected-color")) {
-            element.classList.add("hover-button");
+        if(element.id === "custom-color-input") {
+            if(!customColorElement.classList.contains("selected-color")) {
+                customColorElement.classList.add("hover-button");
+            }
+        } else {
+            if(!element.classList.contains("selected-color")) {
+                element.classList.add("hover-button");
+            }
         }
     }
 }
 
 function removeStyleOnLeave(element) {
     if(element.id !== "row-one" && element.id !== "row-two" && element.id !== "color-picker") {
-        element.classList.remove("hover-button");
+        if(element.id === "custom-color-input") {
+            customColorElement.classList.remove("hover-button");
+        } else {
+            element.classList.remove("hover-button");
+        }
     }
 }
 
