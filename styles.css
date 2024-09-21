@@ -23,7 +23,7 @@ body {
     align-items: center;
 }
 
-#select-squares {
+.input-div {
     display: flex;
     flex-direction: column;
 }

@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="tools">
-        <div id="select-squares">
+        <div class="input-div" id="select-squares">
             <label for="number-squares">Amount of squares</label>
             <span>
                 <input id="number-squares" type="number" value="16">
@@ -17,10 +17,14 @@
             </span>
         </div>
         <div id="clear">
-
+            <button id="clear-button">Clear canvas</button>
         </div>
-        <div id="background-color-picker">
-
+        <div class="input-div" id="background-color-picker">
+            <label for="canvas-color">Select canvas color</label>
+            <span>
+                <input id="canvas-color" type="color" value="#FFFFFF">
+                <button id="submit-color">Enter</button>
+            </span>
         </div>
     </div>
     <div id="squares-container"></div>
