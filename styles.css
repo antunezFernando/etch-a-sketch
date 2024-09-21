@@ -57,7 +57,6 @@ body {
 
 #color-picker {
     display: flex;
-    flex-direction: column;
     width: 600px;
     height: 140px;
     border: 2px solid black;
@@ -65,6 +64,15 @@ body {
     padding: 10px;
     background-color: whitesmoke;
     justify-content: space-evenly;
+    align-items: center;
+}
+
+#color-selection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+    width: 80%;
 }
 
 .color-row {
