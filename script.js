@@ -1,5 +1,13 @@
 let squaresContainer = document.querySelector("#squares-container");
 
+let squaresInput = document.querySelector("#number-squares");
+let squaresInputButton = document.querySelector("#submit-number");
+squaresInputButton.onclick = () => {
+    createGrid(+squaresInput.value);
+}
+
+let backgroundColor = "white";
+
 let colorPicker = document.querySelector("#color-picker");
 
 let currentColor = "black";
@@ -18,19 +26,22 @@ window.setInterval(() => {
 }, 500);
 
 initializeEventListeners();
-createSquares(64)
+createGrid(16)
 
-function createSquares(number) {
+function createGrid(number) {
     if(typeof number !== "number" || number > 100 || number < 1) {
         alert("The input must be a number between 1 and 100")
         return
     }
+    
+    squaresContainer.textContent = "";
 
     for(let i = 0; i < number; i++) {
         let rowDiv = document.createElement("div");
         rowDiv.classList.add("row-div");
         for(let j = 0; j < number; j++) {
             let squareDiv = document.createElement("div");
+            squareDiv.style.backgroundColor = backgroundColor;
             squareDiv.classList.add("square");
             rowDiv.appendChild(squareDiv);
         }
@@ -133,8 +144,7 @@ function removeStyleOnLeave(element) {
 }
 
 function getRandomNumber(limit) {
-    let num = Math.floor(Math.random() * limit);
-    return num;
+    return Math.floor(Math.random() * limit);
 }
 
 // pencil by <a href="https://www.freepik.com/free-vector/pencil_5028180.htm#fromView=search&page=1&position=0&uuid=8b012b02-dc8e-4401-8877-ade6763f877a">Image by gstudioimagen on Freepik</a>
