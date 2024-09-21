@@ -5,19 +5,38 @@
 body {
     margin: 0;
     display: flex;
+    justify-content: flex-start;
+    width: 100vw;
+    height: 100vh;
+}
+
+#info {
+    background-color: whitesmoke;
+    height: 100vh;
+    width: 100px;
+    transition: all 0.5s;
+}
+
+#title {
+    font-size: 50px;
+    font-family: 'KiraLynn', sans-serif;
+}
+
+#main {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    gap: 10px;
+    flex: 1 1 0;
 }
 
 #tools {
     display: flex;
     border: 2px solid black;
     border-radius: 5px;
+    background-color: whitesmoke;
     width: 600px;
-    height: 100px;
     padding: 10px;
     gap: 10px;
     justify-content: space-evenly;
@@ -39,6 +58,12 @@ body {
     justify-content: center;
     align-items: center;
     gap: 10px;
+}
+
+.input-div button,
+.input-div input {
+    background-color: white;
+    border-radius: 5px;
 }
 
 #number-squares {
@@ -80,7 +105,6 @@ body {
 #color-picker {
     display: flex;
     width: 600px;
-    height: 140px;
     border: 2px solid black;
     border-radius: 5px;
     padding: 10px;

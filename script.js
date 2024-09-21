@@ -1,3 +1,4 @@
+let infoContainer = document.querySelector("#info");
 let squaresContainer = document.querySelector("#squares-container");
 
 let canvasColor = "white";
@@ -69,6 +70,14 @@ function createGrid(number, bgColor) {
 }
 
 function initializeEventListeners() {
+    infoContainer.addEventListener("mouseenter", () => {
+        infoContainer.style.width = "300px";
+    });
+    
+    infoContainer.addEventListener("mouseleave", () => {
+        infoContainer.style.width = "100px";
+    });
+
     let func = (event) => {
         mouseOverEvent(event);
     };
@@ -132,7 +141,7 @@ function selectColor(element) {
         if(element.id == "eraser") {
             currentColor = canvasColor;
             colorDiv = document.querySelector("#eraser");
-            squaresContainer.style.cursor = "url(./images/erase.png), auto";
+            squaresContainer.style.cursor = "url(./images/eraser.png), auto";
         } else if (element.id === "custom-color-input") {
             colorDiv = document.querySelector("#custom");
             squaresContainer.style.cursor = "url(./images/pencil.png), auto";
@@ -179,5 +188,5 @@ function getRandomNumber(limit) {
 }
 
 // pencil by <a href="https://www.freepik.com/free-vector/pencil_5028180.htm#fromView=search&page=1&position=0&uuid=8b012b02-dc8e-4401-8877-ade6763f877a">Image by gstudioimagen on Freepik</a>
-// <a href="https://www.flaticon.com/free-icons/eraser" title="eraser icons">Eraser icons created by Freepik - Flaticon</a>
 // <a href="https://www.flaticon.com/free-icons/eraser" title="eraser icons">Eraser icons created by DinosoftLabs - Flaticon</a>
+// https://www.cdnfonts.com/kiralynn.font

@@ -5,47 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-A-Sketch</title>
     <link href="./styles.css" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/kiralynn" rel="stylesheet">
     <script src="./script.js" defer></script>
 </head>
 <body>
-    <div id="tools">
-        <div class="input-div" id="select-squares">
-            <label for="number-squares">Amount of<br>rows-columns</label>
-            <span>
-                <input id="number-squares" type="number" value="16">
-                <button id="submit-number">Enter</button>
-            </span>
-        </div>
-        <div class="input-div" id="clear">
-            <button id="clear-button">Clear canvas</button>
-        </div>
-        <div class="input-div" id="canvas-color-picker">
-            <label for="canvas-color">Select canvas<br>color</label>
-            <span>
-                <input id="canvas-color" type="color" value="#FFFFFF">
-                <button id="submit-color">Enter</button>
-            </span>
-        </div>
+    <div id="info">
+
     </div>
-    <div id="squares-container"></div>
-    <div id="color-picker">
-        <div id="color-selection">
-            <div class="color-row" id="row-one">
-                <span class="color-button selected-color" id="black"></span>
-                <span class="color-button" id="white"></span>
-                <span class="color-button" id="blue"></span>
-                <span class="color-button" id="red"></span>
-                <span class="color-button" id="yellow"></span>
+    <div id="main">
+        <span id="title">ETCH-A-SKETCH</span>
+        <div id="tools">
+            <div class="input-div" id="select-squares">
+                <label for="number-squares">Amount of<br>rows-columns</label>
+                <span>
+                    <input id="number-squares" type="number" value="16">
+                    <button id="submit-number">Enter</button>
+                </span>
             </div>
-            <div class="color-row" id="row-two">
-                <span class="color-button" id="green"></span>
-                <span class="color-button" id="orange"></span>
-                <span class="color-button" id="lightblue"></span>
-                <span class="color-button" id="purple"></span>
-                <span class="color-button" id="custom"><input class="color-button" type="color" id="custom-color-input"/></span>
+            <div class="input-div" id="clear">
+                <button id="clear-button">Clear canvas</button>
+            </div>
+            <div class="input-div" id="canvas-color-picker">
+                <label for="canvas-color">Select canvas<br>color</label>
+                <span>
+                    <input id="canvas-color" type="color" value="#FFFFFF">
+                    <button id="submit-color">Enter</button>
+                </span>
             </div>
         </div>
-        <img class="eraser-button" id="eraser" src="./images/erase-src.png">
+        <div id="squares-container"></div>
+        <div id="color-picker">
+            <div id="color-selection">
+                <div class="color-row" id="row-one">
+                    <span class="color-button selected-color" id="black"></span>
+                    <span class="color-button" id="white"></span>
+                    <span class="color-button" id="blue"></span>
+                    <span class="color-button" id="red"></span>
+                    <span class="color-button" id="yellow"></span>
+                </div>
+                <div class="color-row" id="row-two">
+                    <span class="color-button" id="green"></span>
+                    <span class="color-button" id="orange"></span>
+                    <span class="color-button" id="lightblue"></span>
+                    <span class="color-button" id="purple"></span>
+                    <span class="color-button" id="custom"><input class="color-button" type="color" id="custom-color-input"/></span>
+                </div>
+            </div>
+            <img class="eraser-button" id="eraser" src="./images/eraser-src.png">
+        </div>
     </div>
 </body>
 </html>
