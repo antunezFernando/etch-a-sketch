@@ -45,7 +45,8 @@ body {
     flex-direction: column;
     width: 600px;
     height: 140px;
-    border: 5px solid black;
+    border: 2px solid black;
+    border-radius: 5px;
     padding: 10px;
     background-color: whitesmoke;
     justify-content: space-evenly;
@@ -58,13 +59,19 @@ body {
 }
 
 .color-button {
+    border: 1px solid black;
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
 
 .selected-color {
-    border: 5px solid springgreen;
+    border: 3px solid springgreen;
+}
+
+.hover-button {
+    border: 3px solid springgreen;
+    transition: all 0.1s;
 }
 
 #black {

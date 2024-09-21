@@ -39,9 +39,9 @@ function initializeEventListeners() {
         mouseOverEvent(event);
     };
 
-    squaresContainer.addEventListener("mousedown", (event) => {
-        event.preventDefault();
-        changeColor(event.target)
+    squaresContainer.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        changeColor(e.target)
         mouseDownEvent(squaresContainer, func);
     });
 
@@ -53,8 +53,16 @@ function initializeEventListeners() {
         mouseLeaveEvent(squaresContainer, func);
     });
 
-    colorPicker.addEventListener("click", e => {
+    colorPicker.addEventListener("click", (e) => {
         selectPredefinedColor(e.target);
+    });
+
+    colorPicker.addEventListener("mouseover", (e) => {
+        applyStyleOnHover(e.target);
+    });
+
+    colorPicker.addEventListener("mouseout", (e) => {
+        removeStyleOnLeave(e.target);
     });
 }
 
@@ -79,20 +87,34 @@ function changeColor(element) {
 }
 
 function selectPredefinedColor(element) {
-    if(element.id !== "row-one" && element.id !== "row-two" &&
-        element.id !== "color-picker") {
+    if(element.id !== "row-one" && element.id !== "row-two" && element.id !== "color-picker") {
         colorDiv.classList.remove("selected-color");
         currentColor = element.id;
         colorDiv = document.querySelector(`#${element.id}`);
+        colorDiv.classList.remove("hover-button");
         colorDiv.classList.add("selected-color");
     }
 }
 
 function getRandomColorString() {
-    return `rgb(${randomNumber(255)}, ${randomNumber(255)}, ${randomNumber(255)})`;
+    return `rgb(${getRandomNumber(255)}, ${getRandomNumber(255)}, ${getRandomNumber(255)})`;
 }
 
-function randomNumber(limit) {
+function applyStyleOnHover(element) {
+    if(element.id !== "row-one" && element.id !== "row-two" && element.id !== "color-picker") {
+        if(!element.classList.contains("selected-color")) {
+            element.classList.add("hover-button");
+        }
+    }
+}
+
+function removeStyleOnLeave(element) {
+    if(element.id !== "row-one" && element.id !== "row-two" && element.id !== "color-picker") {
+        element.classList.remove("hover-button");
+    }
+}
+
+function getRandomNumber(limit) {
     let num = Math.floor(Math.random() * limit);
     return num;
 }
