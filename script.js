@@ -103,7 +103,9 @@ function mouseLeaveEvent(element, functionToRemove) {
 }
 
 function changeSquareColor(element) {
-    element.style.backgroundColor = currentColor;
+    if(element.classList.contains("square")) {
+        element.style.backgroundColor = currentColor;
+    }
 }
 
 function selectColor(element) {
