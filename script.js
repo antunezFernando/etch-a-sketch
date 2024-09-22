@@ -2,7 +2,7 @@ let infoDiv = document.querySelector("#info-div");
 let infoContainer = document.querySelector("#info-container");
 let infoButton = document.querySelector("#info-button");
 let infoText = document.querySelector("#info-text");
-let sidebarDisplayed = false;
+let sidebarExpanded = false;
 let squaresContainer = document.querySelector("#squares-container");
 
 let canvasColor = "white";
@@ -75,20 +75,16 @@ function createGrid(number, bgColor) {
 
 function initializeEventListeners() {
     infoButton.addEventListener("click", () => {
-        if(sidebarDisplayed) {
-            infoDiv.style.width = "100px";
-            infoContainer.classList.remove("expanded");
-            infoText.classList.remove("shown");
-            infoText.classList.add("hidden");
+        if(sidebarExpanded) {
             infoButton.setAttribute("src", "./images/menu.png");
         } else {
-            infoDiv.style.width = "300px";
-            infoContainer.classList.add("expanded");
-            infoText.classList.remove("hidden");
-            infoText.classList.add("shown");
             infoButton.setAttribute("src", "./images/arrow.png");
         }
-        sidebarDisplayed = !sidebarDisplayed;
+        infoDiv.classList.toggle("expanded");
+        infoDiv.classList.toggle("condensed");
+        infoText.classList.toggle("shown");
+        infoText.classList.toggle("hidden");
+        sidebarExpanded = !sidebarExpanded;
     });
 
     let func = (event) => {

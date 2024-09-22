@@ -9,7 +9,7 @@
     <script src="./script.js" defer></script>
 </head>
 <body>
-    <div id="info-div">
+    <div class="condensed" id="info-div">
         <div id="info-container">
             <img id="info-button" src="./images/menu.png">
             <div class="hidden" id="info-text">
@@ -26,13 +26,13 @@
         </div>
     </div>
     <div id="main">
-        <span id="title">ETCH-A-SKETCH</span>
-        <div id="tools">
+        <span class="main-element" id="title">ETCH-A-SKETCH</span>
+        <div class="main-element" id="tools">
             <div class="input-div" id="select-squares">
                 <label for="number-squares">Amount of<br>rows-columns</label>
                 <span>
-                    <input id="number-squares" type="number" value="16">
-                    <button id="submit-number">Enter</button>
+                    <input class="input-style" id="number-squares" type="number" value="16">
+                    <button class="input-style" id="submit-number">Enter</button>
                 </span>
             </div>
             <div class="input-div" id="clear">
@@ -41,13 +41,13 @@
             <div class="input-div" id="canvas-color-picker">
                 <label for="canvas-color">Select canvas<br>color</label>
                 <span>
-                    <input id="canvas-color" type="color" value="#FFFFFF">
-                    <button id="submit-color">Enter</button>
+                    <input class="input-style" id="canvas-color" type="color" value="#FFFFFF">
+                    <button class="input-style" id="submit-color">Enter</button>
                 </span>
             </div>
         </div>
-        <div id="squares-container"></div>
-        <div id="color-picker">
+        <div class="main-element" id="squares-container"></div>
+        <div class="main-element" id="color-picker">
             <div id="color-selection">
                 <div class="color-row" id="row-one">
                     <span class="color-button selected-color" id="black"></span>
