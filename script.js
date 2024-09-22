@@ -87,6 +87,14 @@ function initializeEventListeners() {
         sidebarExpanded = !sidebarExpanded;
     });
 
+    infoButton.addEventListener("mouseenter", (e) => {
+        applyStyleOnHover(e.target);
+    });
+
+    infoButton.addEventListener("mouseleave", (e) => {
+        removeStyleOnLeave(e.target);
+    });
+
     let func = (event) => {
         mouseOverEvent(event);
     };
@@ -159,7 +167,7 @@ function selectColor(element) {
             colorDiv = document.querySelector(`#${element.id}`);
             squaresContainer.style.cursor = "url(./images/pencil.png), auto";
         }
-        colorDiv.classList.remove("hover-button");
+        colorDiv.classList.remove("color-button-hover");
         colorDiv.classList.add("selected-color");
     }
 }
@@ -172,23 +180,27 @@ function applyStyleOnHover(element) {
     if(element.classList.contains("color-button") || element.classList.contains("eraser-button")) {
         if(element.id === "custom-color-input") {
             if(!customColorElement.classList.contains("selected-color")) {
-                customColorElement.classList.add("hover-button");
+                customColorElement.classList.add("color-button-hover");
             }
         } else {
             if(!element.classList.contains("selected-color")) {
-                element.classList.add("hover-button");
+                element.classList.add("color-button-hover");
             }
         }
+    } else if(element.id === "info-button") {
+        element.classList.add("info-button-hover");
     }
 }
 
 function removeStyleOnLeave(element) {
     if(element.classList.contains("color-button") || element.classList.contains("eraser-button")) {
         if(element.id === "custom-color-input") {
-            customColorElement.classList.remove("hover-button");
+            customColorElement.classList.remove("color-button-hover");
         } else {
-            element.classList.remove("hover-button");
+            element.classList.remove("color-button-hover");
         }
+    } else if(element.id === "info-button") {
+        element.classList.remove("info-button-hover");
     }
 }
 
