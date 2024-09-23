@@ -49,7 +49,7 @@ body {
 
 .info-button-hover {
     border-radius: 5px;
-    background-color: grey;
+    background-color: silver;
     transition: all 0.3s;
 }
 
@@ -157,7 +157,7 @@ a:hover {
 }
 
 #clear-button {
-    width: 50%;
+    width: 100px;
     padding: 10px;
     border-radius: 5px;
 }
@@ -293,5 +293,118 @@ a:hover {
     }
     100% {
         transform: translate(0px);
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .main-element {
+        width: 400px;
+    }
+
+    #squares-container {
+        height: 400px;
+    }
+
+    .condensed {
+        width: 60px;
+    }
+
+    .expanded {
+        width: 180px;
+    }
+
+    #main {
+        margin-left: 60px;
+    }
+
+    .button-size {
+        width: 40px;
+        height: 40px;
+    }
+
+    #info-container {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #title {
+        font-size: 30px;
+    }
+
+    .main-element {
+        width: 300px;
+    }
+
+    #squares-container {
+        height: 300px;
+    }
+
+    .condensed {
+        width: 50px;
+    }
+
+    .expanded {
+        width: 150px;
+    }
+
+    #main {
+        margin-left: 50px;
+    }
+
+    .button-size {
+        width: 35px;
+        height: 35px;
+    }
+
+    .standard-font-size {
+        font-size: 15px;
+    }
+
+    #info-container {
+        padding: 5px;
+    }
+
+    .input-div span {
+        flex-direction: column;
+    }
+
+    #tools {
+        padding: 5px;
+    }
+
+    #clear-button {
+        width: 70px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .main-element {
+        width: 230px;
+    }
+
+    #squares-container {
+        height: 230px;
+    }
+
+    .button-size {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .condensed {
+        width: 40px;
+    }
+
+    .expanded {
+        width: 120px;
+    }
+
+    #main {
+        margin-left: 40px;
+    }
+
+    #info-container {
+        padding: 3px;
     }
 }
